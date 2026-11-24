@@ -98,8 +98,8 @@ window.LAB_DATA = {
 
   /* 구성원·책임자. 사진은 images/ 폴더에 넣고 photo: "images/파일명.jpg" 로 지정하세요 */
   members: {
-    verified: false,
-    note: "구성원은 2024년 7월 IBRIC 인터뷰 기준입니다. 현재 구성원과 사진으로 업데이트가 필요합니다.",
+    verified: true,
+    note: "",
     intro: "방사선의학과 항암신약 개발을 함께 연구하는 구성원들이 암세포만을 표적화하는 항암치료제라는 하나의 목표를 향해 연구합니다.",
     /* 출처: 박사님 CV (2026.10) */
     pi: {
@@ -140,9 +140,11 @@ window.LAB_DATA = {
     groups: ["Senior Researcher", "Postdoctoral Researcher", "Ph.D. Candidate", "M.S. Candidate", "Researcher"],
     people: [
       { name: "김동영", role: "선임연구원", group: "Senior Researcher", photo: "" },
+      { name: "권영주", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
+      { name: "김근영", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
       { name: "김윤아", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
-      { name: "권영주", role: "박사과정", group: "Ph.D. Candidate", photo: "" },
-      { name: "김예현", role: "박사과정", group: "Ph.D. Candidate", photo: "" },
+      { name: "최예림", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
+      { name: "김찬율", role: "박사과정", group: "Ph.D. Candidate", photo: "" },
     ],
     /* 예: { name: "홍길동", now: "현재 소속" } */
     alumni: [],
