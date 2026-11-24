@@ -95,6 +95,26 @@
     ? `<h3 class="t-head">Alumni</h3><ul>${M.alumni.map((a) => `<li><b>${esc(a.name)}</b>${a.now ? ` · ${esc(a.now)}` : ""}</li>`).join("")}</ul>`
     : "";
 
+  // OUR STORY gallery
+  const G = M.gallery || [];
+  if (!G.length) { $("#story").style.display = "none"; } else {
+    $("#storyTitle").textContent = M.galleryTitle || "";
+    $("#storyIntro").textContent = M.galleryIntro || "";
+    $("#storyTrack").innerHTML = G.map((g, i) => `
+      <figure class="story-item"><img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" data-i="${i}" /><figcaption>${String(i + 1).padStart(2, "0")}</figcaption></figure>`).join("");
+    const tr = $("#storyTrack");
+    const step = () => (tr.querySelector(".story-item")?.offsetWidth || 300) + 16;
+    $("#storyPrev").addEventListener("click", () => tr.scrollBy({ left: -step(), behavior: "smooth" }));
+    $("#storyNext").addEventListener("click", () => tr.scrollBy({ left: step(), behavior: "smooth" }));
+    tr.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") tr.scrollBy({ left: step() }); if (e.key === "ArrowLeft") tr.scrollBy({ left: -step() }); });
+    const prog = () => { const m = tr.scrollWidth - tr.clientWidth; $("#storyProgress").style.width = (m > 0 ? 10 + (tr.scrollLeft / m) * 90 : 100) + "%"; };
+    tr.addEventListener("scroll", prog, { passive: true }); prog();
+    const lb = $("#lightbox"), lbImg = lb.querySelector("img");
+    tr.addEventListener("click", (e) => { const im = e.target.closest("img"); if (!im) return; lbImg.src = im.src; lbImg.alt = im.alt; lb.hidden = false; });
+    lb.addEventListener("click", () => { lb.hidden = true; });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") lb.hidden = true; });
+  }
+
   // ABOUT PI
   const tl = (arr) => `<ul class="tl">${arr.map((e) => `<li><span>${esc(e.period)}</span><p>${esc(e.text)}</p></li>`).join("")}</ul>`;
   $("#piWrap").innerHTML = `

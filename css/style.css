@@ -323,3 +323,26 @@ img.avatar { object-fit: cover; }
   .pl-status { display: block; font-size: 13px; font-weight: 700; color: #cfd8e6; }
 }
 .pl-partner span { line-height: 1.4; }
+
+/* OUR STORY */
+.story { margin-top: 40px; }
+.story-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 14px; }
+.story-head .t-head { border: 0; margin-bottom: 4px; padding-bottom: 0; }
+.story-head p { color: #36415a; font-size: 15.5px; }
+.story-nav { display: flex; gap: 8px; flex: none; }
+.story-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; font-size: 18px; cursor: pointer; transition: background .2s; }
+.story-nav button:hover { background: var(--paper); }
+.story-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; }
+.story-track::-webkit-scrollbar { display: none; }
+.story-track:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 4px; }
+.story-item { flex: none; width: clamp(240px, 30vw, 340px); scroll-snap-align: start; margin: 0; position: relative; }
+.story-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; display: block; cursor: zoom-in; transition: transform .3s; }
+.story-item:hover img { transform: translateY(-4px); }
+.story-item figcaption { position: absolute; left: 10px; bottom: 10px; font-family: var(--display); font-weight: 700; font-size: 13px; color: #fff; background: rgba(11,18,32,.55); padding: 2px 8px; border-radius: 6px; }
+.story-bar { height: 3px; background: var(--line); border-radius: 2px; margin-top: 12px; overflow: hidden; }
+.story-bar i { display: block; height: 100%; width: 10%; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transition: width .2s; }
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(7,12,22,.88); display: grid; place-items: center; padding: 24px; cursor: zoom-out; }
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: min(92vw, 1000px); max-height: 86vh; border-radius: 10px; }
+.lightbox button { position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; font-size: 28px; color: #fff; background: none; border: 0; cursor: pointer; }
+@media (max-width: 600px) { .story-head { flex-direction: column; align-items: flex-start; } }

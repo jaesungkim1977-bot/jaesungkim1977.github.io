@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=202611240743" />
+  <link rel="stylesheet" href="css/style.css?v=202611240748" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -94,6 +94,15 @@
       <p class="note reveal" id="membersNote"></p>
       <div class="team-groups" id="teamGroups"></div>
       <div class="alumni reveal" id="alumni"></div>
+      <div class="story reveal" id="story">
+        <div class="story-head">
+          <div><h3 class="t-head" id="storyTitle"></h3><p id="storyIntro"></p></div>
+          <div class="story-nav"><button id="storyPrev" aria-label="이전 사진">←</button><button id="storyNext" aria-label="다음 사진">→</button></div>
+        </div>
+        <div class="story-track" id="storyTrack" tabindex="0"></div>
+        <div class="story-bar"><i id="storyProgress"></i></div>
+      </div>
+      <div class="lightbox" id="lightbox" hidden><button aria-label="닫기">×</button><img alt="" /></div>
     </div>
   </section>
 
@@ -164,8 +173,8 @@
     </div>
   </footer>
 
-  <script src="data/content.js?v=202611240743"></script>
-  <script src="js/hero.js?v=202611240743"></script>
-  <script src="js/main.js?v=202611240743"></script>
+  <script src="data/content.js?v=202611240748"></script>
+  <script src="js/hero.js?v=202611240748"></script>
+  <script src="js/main.js?v=202611240748"></script>
 </body>
 </html>
