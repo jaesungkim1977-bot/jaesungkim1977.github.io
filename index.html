@@ -18,13 +18,13 @@
     </a>
     <button class="nav-toggle" aria-label="메뉴" id="navToggle"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="navLinks">
-      <a href="#about">소개</a>
-      <a href="#research">연구주제</a>
-      <a href="#members">구성원</a>
-      <a href="#publications">논문</a>
-      <a href="#projects">수행과제</a>
-      <a href="#news">연구뉴스</a>
-      <a href="#contact" class="nav-cta">연락처</a>
+      <a href="#research" title="연구주제">Research</a>
+      <a href="#team" title="구성원">Team</a>
+      <a href="#pi" title="책임자 소개">About PI</a>
+      <a href="#publications" title="논문">Publications</a>
+      <a href="#projects" title="수행과제">Projects</a>
+      <a href="#news" title="연구 뉴스">News</a>
+      <a href="#contact" class="nav-cta" title="연락처">Contact</a>
     </nav>
   </header>
 
@@ -84,19 +84,28 @@
     </div>
   </section>
 
-  <!-- MEMBERS -->
-  <section class="section" id="members">
+  <!-- TEAM -->
+  <section class="section" id="team">
     <div class="container">
-      <p class="kicker reveal">People</p>
-      <h2 class="reveal">구성원 <span id="membersBadge"></span></h2>
+      <p class="kicker reveal">Team</p>
+      <h2 class="reveal">Meet Us <span id="membersBadge"></span></h2>
+      <p class="lead reveal" id="teamIntro"></p>
       <p class="note reveal" id="membersNote"></p>
-      <div class="pi-card reveal" id="piCard"></div>
-      <div class="people-grid" id="peopleGrid"></div>
+      <div class="team-groups" id="teamGroups"></div>
+      <div class="alumni reveal" id="alumni"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT PI -->
+  <section class="section section-tint" id="pi">
+    <div class="container">
+      <p class="kicker reveal">About PI</p>
+      <div class="pi-wrap" id="piWrap"></div>
     </div>
   </section>
 
   <!-- PUBLICATIONS -->
-  <section class="section section-tint" id="publications">
+  <section class="section" id="publications">
     <div class="container">
       <p class="kicker reveal">Publications</p>
       <h2 class="reveal">논문</h2>

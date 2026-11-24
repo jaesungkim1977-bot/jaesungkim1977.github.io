@@ -228,3 +228,39 @@ h3 { font-size: 20px; }
 .chip-corr.on { background: #0f766e; border-color: #0f766e; }
 .pub-count { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
 .pub-list { max-height: 900px; overflow-y: auto; padding-right: 6px; }
+
+/* TEAM */
+.lead { font-size: 17px; color: #36415a; max-width: 760px; margin-bottom: 28px; }
+.t-group { margin-bottom: 30px; }
+.t-head { font-family: var(--display); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.person-pi { max-width: 420px; }
+.person-pi em { display: block; font-style: normal; font-size: 12.5px; color: var(--accent-2); margin-top: 2px; }
+img.avatar { object-fit: cover; }
+.alumni ul { list-style: none; display: grid; gap: 6px; color: #36415a; }
+
+/* ABOUT PI */
+.pi-wrap { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 56px; align-items: start; }
+.pi-side { position: sticky; top: 96px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; box-shadow: 0 30px 60px -45px rgba(11,18,32,.4); }
+.pi-photo { width: 100%; aspect-ratio: 4 / 5; border-radius: 14px; object-fit: cover; margin-bottom: 20px; }
+.pi-photo.ph { display: grid; place-items: center; font-size: 64px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--accent-2), var(--accent)); }
+.pi-side h2 { font-family: var(--display); font-size: 26px; margin-bottom: 2px; }
+.pi-ko { font-weight: 700; color: var(--muted); }
+.pi-title { font-size: 14px; color: #36415a; margin: 8px 0 14px; }
+.pi-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+.pi-tags span { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: #eaf2ff; color: #2856b6; }
+.pi-contact { border-top: 1px solid var(--line); padding-top: 14px; }
+.pi-contact small { display: block; font-size: 12px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+.pi-contact a { color: var(--accent-2); font-weight: 500; }
+.pi-greet p { font-size: 17px; color: #36415a; margin-bottom: 14px; }
+.pi-block { margin-top: 36px; }
+.pi-block h3 { font-family: var(--display); font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); padding-bottom: 8px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.tl { list-style: none; }
+.tl li { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.tl span { font-family: var(--display); font-weight: 500; color: var(--ink); white-space: nowrap; }
+.tl p { color: #36415a; }
+@media (max-width: 900px) {
+  .pi-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .pi-side { position: static; }
+  .pi-photo { max-width: 240px; }
+}
+@media (max-width: 520px) { .tl li { grid-template-columns: 1fr; gap: 2px; } }

@@ -47,27 +47,51 @@
       <div class="pl-bar"><i data-w="${(it.stage / P.stages.length) * 100}%"></i></div>
     </div>`).join("");
 
-  // MEMBERS
+  // TEAM
   const M = D.members;
+  const pic = (o, cls, n) => o.photo
+    ? `<img class="${cls}" src="${esc(o.photo)}" alt="${esc(o.name)}" loading="lazy" />`
+    : `<div class="${cls} ph">${esc(o.name.slice(-n))}</div>`;
   $("#membersBadge").innerHTML = badge(M.verified);
   $("#membersNote").textContent = M.verified === false ? M.note : "";
+  $("#teamIntro").textContent = M.intro || "";
   const pi = M.pi;
-  $("#piCard").innerHTML = `
-    <div class="avatar">${esc(pi.name.slice(-2))}</div>
-    <div class="pi-info">
-      <div class="role">Principal Investigator · ${esc(pi.title)}</div>
-      <h3>${esc(pi.name)}</h3>
-      <div class="en">${esc(pi.nameEn)} · <a href="mailto:${esc(pi.email)}">${esc(pi.email)}</a></div>
-      <div class="pi-cols">
-        <div><h4>EDUCATION</h4><ul>${pi.education.map((e) => `<li>${esc(e)}</li>`).join("")}</ul></div>
-        <div><h4>CAREER</h4><ul>${pi.career.map((e) => `<li>${esc(e)}</li>`).join("")}</ul></div>
-      </div>
+  const groupsHtml = [`
+    <div class="t-group reveal">
+      <h3 class="t-head">Principal Investigator</h3>
+      <a class="person person-pi" href="#pi">
+        ${pic(pi, "avatar sm", 1)}
+        <div><b>${esc(pi.name)}</b><span>${esc(pi.nameEn)}</span><em>프로필 보기 →</em></div>
+      </a>
+    </div>`].concat(M.groups.map((g) => {
+      const ps = M.people.filter((p) => p.group === g);
+      if (!ps.length) return "";
+      return `<div class="t-group reveal"><h3 class="t-head">${esc(g)}</h3><div class="people-grid">${ps.map((p) => `
+        <div class="person">${pic(p, "avatar sm", 1)}<div><b>${esc(p.name)}</b><span>${esc(p.role)}</span></div></div>`).join("")}</div></div>`;
+    }));
+  $("#teamGroups").innerHTML = groupsHtml.join("");
+  $("#alumni").innerHTML = M.alumni.length
+    ? `<h3 class="t-head">Alumni</h3><ul>${M.alumni.map((a) => `<li><b>${esc(a.name)}</b>${a.now ? ` · ${esc(a.now)}` : ""}</li>`).join("")}</ul>`
+    : "";
+
+  // ABOUT PI
+  const tl = (arr) => `<ul class="tl">${arr.map((e) => `<li><span>${esc(e.period)}</span><p>${esc(e.text)}</p></li>`).join("")}</ul>`;
+  $("#piWrap").innerHTML = `
+    <aside class="pi-side reveal">
+      ${pic(pi, "pi-photo", 2)}
+      <h2>${esc(pi.nameEn)}</h2>
+      <p class="pi-ko">${esc(pi.name)}</p>
+      <p class="pi-title">${esc(pi.title)}</p>
+      <div class="pi-tags">${(pi.interests || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
+      <div class="pi-contact"><small>Get in Touch</small><a href="mailto:${esc(pi.email)}">${esc(pi.email)}</a></div>
+    </aside>
+    <div class="pi-main reveal">
+      <div class="pi-greet">${pi.greeting.map((g) => `<p>${esc(g)}</p>`).join("")}
+        ${pi.greetingNote ? `<p class="source">${esc(pi.greetingNote)}</p>` : ""}</div>
+      <div class="pi-block"><h3>Education</h3>${tl(pi.education)}</div>
+      <div class="pi-block"><h3>Professional Career</h3>${tl(pi.career)}</div>
+      ${pi.awards && pi.awards.length ? `<div class="pi-block"><h3>Awards</h3>${tl(pi.awards)}</div>` : ""}
     </div>`;
-  $("#peopleGrid").innerHTML = M.people.map((p, i) => `
-    <div class="person reveal" style="transition-delay:${i * 70}ms">
-      <div class="avatar sm">${esc(p.name.slice(-1))}</div>
-      <div><b>${esc(p.name)}</b><span>${esc(p.role)}</span></div>
-    </div>`).join("");
 
   // PUBLICATIONS
   const pubs = D.publications.items;

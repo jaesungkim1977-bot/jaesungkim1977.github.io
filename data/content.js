@@ -82,31 +82,47 @@ window.LAB_DATA = {
     ],
   },
 
+  /* 구성원·책임자. 사진은 images/ 폴더에 넣고 photo: "images/파일명.jpg" 로 지정하세요 */
   members: {
     verified: false,
     note: "구성원은 2024년 7월 IBRIC 인터뷰 기준입니다. 현재 구성원과 사진으로 업데이트가 필요합니다.",
+    intro: "방사선의학과 항암신약 개발을 함께 연구하는 구성원들이 암세포만을 표적화하는 항암치료제라는 하나의 목표를 향해 연구합니다.",
     pi: {
       name: "김재성",
       nameEn: "Jae-Sung Kim, Ph.D.",
-      title: "책임연구원 · UST 교수",
+      title: "책임연구원, 한국원자력의학원 · 교수, UST",
+      photo: "",
       email: "jaesung@kirams.re.kr",
+      greetingNote: "인사말은 2024 IBRIC 인터뷰 내용을 바탕으로 작성한 초안입니다.",
+      greeting: [
+        "혁신 항암신약 연구실에 오신 것을 환영합니다. 2007년부터 한국원자력의학원에서 방사선·항암 치료 내성을 연구해 왔고, 2014년부터 UST 교수로 학생들과 함께 연구하고 있습니다.",
+        "지금은 정상세포는 지나치고 암세포만을 표적화하는 Cancer X 치료제 개발에 집중하고 있습니다. 표적 발굴과 기전 연구에서 출발해 후보물질 도출과 전임상 검증까지, 환자 치료에 실제로 닿는 연구를 목표로 합니다.",
+        "연구자 자신뿐 아니라 사회에 보탬이 되는 좋은 연구를 하고, 함께하는 구성원 모두가 각자의 연구 경력을 키워 갈 수 있는 연구실을 만들고자 합니다.",
+      ],
+      interests: ["암 특이적 치료 표적", "방사선 내성 극복", "First-in-class 저분자 표적치료제", "방사선 병용 항암면역"],
       education: [
-        "2008 박사, 광주과학기술원(GIST) 분자생물학",
-        "2003 석사, 광주과학기술원(GIST) 분자생물학",
-        "2002 학사, 경북대학교 생명과학",
+        { period: "2008", text: "Ph.D., 분자생물학, 광주과학기술원(GIST)" },
+        { period: "2003", text: "M.S., 분자생물학, 광주과학기술원(GIST)" },
+        { period: "2002", text: "B.S., 생명과학, 경북대학교" },
       ],
       career: [
-        "2014–현재 UST 교수(전임)",
-        "2007–현재 한국원자력의학원 책임연구원",
-        "2003–2007 광주과학기술원 나노연구소 연구원",
+        { period: "2014–현재", text: "교수(전임), 과학기술연합대학원대학교(UST)" },
+        { period: "2007–현재", text: "책임연구원, 한국원자력의학원(KIRAMS)" },
+        { period: "2003–2007", text: "연구원, 광주과학기술원 나노연구소" },
       ],
+      /* 수상·학회 활동 등을 받으면 채웁니다. 비어 있으면 화면에 표시하지 않습니다 */
+      awards: [],
     },
+    /* 직급(group) 순서대로 묶어서 표시합니다 */
+    groups: ["Senior Researcher", "Postdoctoral Researcher", "Ph.D. Candidate", "M.S. Candidate", "Researcher"],
     people: [
-      { name: "김동영", role: "선임연구원" },
-      { name: "김윤아", role: "박사후연구원" },
-      { name: "권영주", role: "박사과정" },
-      { name: "김예현", role: "박사과정" },
+      { name: "김동영", role: "선임연구원", group: "Senior Researcher", photo: "" },
+      { name: "김윤아", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
+      { name: "권영주", role: "박사과정", group: "Ph.D. Candidate", photo: "" },
+      { name: "김예현", role: "박사과정", group: "Ph.D. Candidate", photo: "" },
     ],
+    /* 예: { name: "홍길동", now: "현재 소속" } */
+    alumni: [],
   },
 
   /* 논문 목록: 박사님 제공 엑셀(2026-11 기준)에서 제목·저널·연도·교신저자 여부만 반영 */
