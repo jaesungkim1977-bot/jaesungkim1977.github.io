@@ -272,3 +272,15 @@ img.avatar { object-fit: cover; }
 .news-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 .news-card h4 { font-size: 17px; line-height: 1.45; }
 @media (max-width: 700px) { .news-year { grid-template-columns: 1fr; gap: 12px; } .news-y { position: static; font-size: 26px; } }
+
+.pub .au { font-size: 13.5px; color: #4b5568; margin-top: 2px; }
+.pub .au b { color: var(--ink); }
+.pi-phone { display: block; font-size: 14px; color: #36415a; margin-top: 2px; }
+.pi-hl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
+.pi-hl div { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+.pi-hl b { display: block; font-family: var(--display); font-size: 26px; color: var(--accent-2); line-height: 1.1; }
+.pi-hl span { font-size: 13px; color: var(--muted); }
+.pi-pubs { padding-left: 20px; color: #36415a; font-size: 14.5px; display: grid; gap: 8px; margin-top: 6px; }
+.pi-pubs i { color: var(--muted); }
+.more-link { display: inline-block; margin-top: 12px; color: var(--accent-2); font-weight: 500; font-size: 14px; }
+@media (max-width: 760px) { .pi-hl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

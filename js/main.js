@@ -83,26 +83,30 @@
       <p class="pi-ko">${esc(pi.name)}</p>
       <p class="pi-title">${esc(pi.title)}</p>
       <div class="pi-tags">${(pi.interests || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
-      <div class="pi-contact"><small>Get in Touch</small><a href="mailto:${esc(pi.email)}">${esc(pi.email)}</a></div>
+      <div class="pi-contact"><small>Get in Touch</small><a href="mailto:${esc(pi.email)}">${esc(pi.email)}</a>${pi.phone ? `<span class="pi-phone">${esc(pi.phone)}</span>` : ""}</div>
     </aside>
     <div class="pi-main reveal">
       <div class="pi-greet">${pi.greeting.map((g) => `<p>${esc(g)}</p>`).join("")}
         ${pi.greetingNote ? `<p class="source">${esc(pi.greetingNote)}</p>` : ""}</div>
+      ${pi.highlights && pi.highlights.length ? `<div class="pi-hl">${pi.highlights.map((h) => `<div><b>${esc(h.value)}</b><span>${esc(h.label)}</span></div>`).join("")}</div>` : ""}
       <div class="pi-block"><h3>Education</h3>${tl(pi.education)}</div>
       <div class="pi-block"><h3>Professional Career</h3>${tl(pi.career)}</div>
       ${pi.awards && pi.awards.length ? `<div class="pi-block"><h3>Awards</h3>${tl(pi.awards)}</div>` : ""}
+      <div class="pi-block"><h3>Selected Publications</h3><ol class="pi-pubs">${D.publications.items.filter((p) => p.selected).slice(0, 6).map((p) => `<li>${esc(p.title)} <i>${esc(p.journal)}</i> ${p.year}</li>`).join("")}</ol>
+        <a class="more-link" href="#publications">전체 논문 보기 →</a></div>
     </div>`;
 
   // PUBLICATIONS
   const pubs = D.publications.items;
   $("#pubNote").textContent = D.publications.note || "";
   const years = [...new Set(pubs.map((p) => p.year))].sort((a, b) => b - a);
-  let fYear = "all", q = "", onlyCorr = false;
+  let fYear = "all", q = "", onlyCorr = false, onlySel = false;
   $("#pubFilters").innerHTML = ['<button class="chip on" data-y="all">전체</button>']
     .concat(years.map((y) => `<button class="chip" data-y="${y}">${y}</button>`)).join("")
+    + '<button class="chip chip-corr" id="selToggle" aria-pressed="false">대표 논문</button>'
     + '<button class="chip chip-corr" id="corrToggle" aria-pressed="false">교신저자 논문만</button>';
   function renderPubs() {
-    const list = pubs.filter((p) => (fYear === "all" || String(p.year) === fYear) && (!onlyCorr || p.corresponding) &&
+    const list = pubs.filter((p) => (fYear === "all" || String(p.year) === fYear) && (!onlyCorr || p.corresponding) && (!onlySel || p.selected) &&
       (!q || (p.title + " " + p.journal + " " + (p.tags || []).join(" ")).toLowerCase().includes(q)));
     $("#pubCount").textContent = `${list.length}편 / 전체 ${pubs.length}편`;
     $("#pubList").innerHTML = list.length ? list.map((p) => `
@@ -110,6 +114,7 @@
         <div class="yr">${p.year}</div>
         <div>
           <div class="t">${esc(p.title)}${p.corresponding ? ' <span class="corr" title="교신저자">Corresponding</span>' : ""}</div>
+          ${p.authors ? `<div class="au">${esc(p.authors).replace(/Kim JS/g, "<b>Kim JS</b>")}</div>` : ""}
           <div class="j">${esc(p.journal)}${p.doi ? ` · <a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">DOI</a>` : ""}</div>
           <div class="tags">${(p.tags || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
         </div>
@@ -117,8 +122,9 @@
   }
   $("#pubFilters").addEventListener("click", (e) => {
     const b = e.target.closest(".chip"); if (!b) return;
+    if (b.id === "selToggle") { onlySel = !onlySel; b.classList.toggle("on", onlySel); b.setAttribute("aria-pressed", onlySel); renderPubs(); return; }
     if (b.id === "corrToggle") { onlyCorr = !onlyCorr; b.classList.toggle("on", onlyCorr); b.setAttribute("aria-pressed", onlyCorr); renderPubs(); return; }
-    document.querySelectorAll("#pubFilters .chip:not(#corrToggle)").forEach((c) => c.classList.toggle("on", c === b));
+    document.querySelectorAll("#pubFilters .chip:not(.chip-corr)").forEach((c) => c.classList.toggle("on", c === b));
     fYear = b.dataset.y; renderPubs();
   });
   $("#pubSearch").addEventListener("input", (e) => { q = e.target.value.trim().toLowerCase(); renderPubs(); });
