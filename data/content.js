@@ -71,14 +71,28 @@ window.LAB_DATA = {
     },
   ],
 
+  /* 파이프라인: 박사님 제공 "파이프라인.pptx" (Current Research) 기준.
+   * stage 는 7단계 중 진행 위치(1~7, 소수 가능). 화살표 길이를 단계로 옮긴 값이라 필요하면 조정하세요. */
   pipeline: {
-    verified: false,
-    note: "파이프라인 단계는 예시입니다. 실제 과제/후보물질 정보로 교체하세요.",
-    stages: ["표적 발굴", "후보 도출", "선도 최적화", "전임상", "임상"],
+    verified: true,
+    subtitle: "저분자 방사선 항암면역치료제 개발",
+    note: "",
+    stages: ["작용점 탐색", "유효물질 도출", "선도물질 도출·최적화", "후보물질 도출", "MOA·전임상", "연구용/허가용 비임상", "임상 (I–II)"],
+    modalities: {
+      sm: { label: "Small molecule", color: "#ff4d6d" },
+      tpd: { label: "TPD", color: "#3b82f6" },
+      protein: { label: "Protein drug", color: "#facc15" },
+    },
     items: [
-      { name: "Cancer X 프로그램 A", target: "암 특이 표적 (예시)", stage: 3 },
-      { name: "Cancer X 프로그램 B", target: "방사선 병용 (예시)", stage: 2 },
-      { name: "Cancer X 프로그램 C", target: "AI 설계 저분자 (예시)", stage: 1 },
+      { name: "MASTL", code: "MKI 시리즈", modality: ["sm"], stage: 2.75, status: "선도물질 최적화", partners: ["DL Pharma", "국가신약개발재단(KDDF)"] },
+      { name: "TEAD", modality: ["sm", "tpd"], stage: 2.75, status: "선도물질 최적화", partners: ["국가신약개발재단(KDDF)"] },
+      { name: "NUAK1", modality: ["sm"], stage: 2.95, status: "선도물질 최적화", partners: ["국가신약개발재단(KDDF)"] },
+      { name: "PCW", modality: ["sm"], stage: 2.15, status: "선도물질 도출", partners: ["PharmCADD"] },
+      { name: "HIF-2α", modality: ["sm"], stage: 2.15, status: "선도물질 도출", partners: ["PharminoGen"] },
+      { name: "ATTEC-1", modality: ["tpd"], stage: 1.45, status: "유효물질 도출", partners: [] },
+      { name: "PI3Kδ/γ", code: "BR101801", modality: ["sm"], stage: 7, status: "임상 2상 (FDA)", partners: ["보령제약"] },
+      { name: "TNKS", code: "STP1002 (Basroparib)", modality: ["sm"], stage: 7, status: "임상 2상 (FDA)", partners: ["에스티팜"] },
+      { name: "Albubody-LYTAC", modality: ["protein"], stage: 2.2, status: "선도물질 도출", partners: ["ProAbTech", "한국화학연구원(KRICT)"] },
     ],
   },
 

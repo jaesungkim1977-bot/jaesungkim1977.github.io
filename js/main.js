@@ -37,15 +37,36 @@
       <p>${esc(r.desc)}</p>
     </article>`).join("");
 
-  // PIPELINE
+  // PIPELINE (신약회사 홈페이지 형식)
   const P = D.pipeline;
-  $("#pipelineNote").innerHTML = P.verified === false ? `${badge(false)} ${esc(P.note)}` : "";
-  $("#pipelineStages").innerHTML = "<span></span>" + P.stages.map((s) => `<span>${esc(s)}</span>`).join("");
-  $("#pipelineRows").innerHTML = P.items.map((it) => `
-    <div class="pl-row">
-      <div class="pl-name"><b>${esc(it.name)}</b><small>${esc(it.target)}</small></div>
-      <div class="pl-bar"><i data-w="${(it.stage / P.stages.length) * 100}%"></i></div>
-    </div>`).join("");
+  const MOD = P.modalities || {};
+  const NS = P.stages.length;
+  $("#pipelineNote").innerHTML = P.verified === false ? `${badge(false)} ${esc(P.note)}` : esc(P.subtitle || "");
+  $("#pipelineFilters").innerHTML = ['<button class="chip on" data-m="all">All</button>']
+    .concat(Object.keys(MOD).map((k) => `<button class="chip" data-m="${esc(k)}"><i class="dot" style="background:${esc(MOD[k].color)}"></i>${esc(MOD[k].label)}</button>`)).join("");
+  $("#pipelineStages").innerHTML = "<span>Program</span>" + P.stages.map((st) => `<span>${esc(st)}</span>`).join("") + "<span>Partner</span>";
+  $("#pipelineRows").innerHTML = P.items.map((it) => {
+    const mods = it.modality || [];
+    const col = (MOD[mods[0]] || {}).color || "#19d3c5";
+    return `
+    <div class="pl-row" data-mod="${esc(mods.join(" "))}">
+      <div class="pl-name">
+        <b>${mods.map((m) => `<i class="dot" title="${esc((MOD[m] || {}).label)}" style="background:${esc((MOD[m] || {}).color)}"></i>`).join("")}${esc(it.name)}</b>
+        ${it.code ? `<small>${esc(it.code)}</small>` : ""}
+      </div>
+      <div class="pl-bar"><i data-w="${Math.min(100, (it.stage / NS) * 100)}%" style="--c:${esc(col)}"><em>${esc(it.status || "")}</em></i></div>
+      <div class="pl-status">${esc(it.status || "")}</div>
+      <div class="pl-partner">${(it.partners || []).map((x) => `<span>${esc(x)}</span>`).join("") || "<span class='muted'>–</span>"}</div>
+    </div>`;
+  }).join("");
+  $("#pipelineFilters").addEventListener("click", (e) => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    document.querySelectorAll("#pipelineFilters .chip").forEach((c) => c.classList.toggle("on", c === b));
+    const m = b.dataset.m;
+    document.querySelectorAll("#pipelineRows .pl-row").forEach((r) => {
+      r.style.display = m === "all" || r.dataset.mod.split(" ").includes(m) ? "" : "none";
+    });
+  });
 
   // TEAM
   const M = D.members;
