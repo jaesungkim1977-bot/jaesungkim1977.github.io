@@ -139,10 +139,10 @@ window.LAB_DATA = {
     /* 직급(group) 순서대로 묶어서 표시합니다 */
     groups: ["Senior Researcher", "Postdoctoral Researcher", "Ph.D. Candidate", "M.S. Candidate", "Researcher"],
     people: [
-      { name: "김동영", role: "선임연구원", group: "Senior Researcher", photo: "" },
-      { name: "권영주", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
+      { name: "김동영", role: "선임연구원", group: "Senior Researcher", photo: "images/members/kim-dy.jpg" },
+      { name: "권영주", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "images/members/kwon-yj.jpg" },
       { name: "김근영", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
-      { name: "김윤아", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
+      { name: "김윤아", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "images/members/kim-ya.jpg" },
       { name: "최예림", role: "박사후연구원", group: "Postdoctoral Researcher", photo: "" },
       { name: "김찬율", role: "박사과정", group: "Ph.D. Candidate", photo: "" },
     ],

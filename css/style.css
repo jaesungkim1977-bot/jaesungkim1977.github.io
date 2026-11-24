@@ -346,3 +346,4 @@ img.avatar { object-fit: cover; }
 .lightbox img { max-width: min(92vw, 1000px); max-height: 86vh; border-radius: 10px; }
 .lightbox button { position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; font-size: 28px; color: #fff; background: none; border: 0; cursor: pointer; }
 @media (max-width: 600px) { .story-head { flex-direction: column; align-items: flex-start; } }
+.person .avatar.sm { flex: none; } img.avatar.sm { border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line); }
