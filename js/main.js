@@ -138,13 +138,19 @@
   // NEWS
   const N = D.news;
   $("#newsNote").textContent = N.verified === false ? N.note : "";
-  $("#newsTrack").innerHTML = N.items.map((n, i) => `
-    <article class="news-card reveal" style="transition-delay:${i * 80}ms">
-      <div class="news-meta"><span class="news-cat">${esc(n.category)}</span><span>${esc(n.date)}</span></div>
-      <h3>${esc(n.title)}${badge(n.verified === true ? true : N.verified)}</h3>
-      <p>${esc(n.body)}</p>
-      ${n.link ? `<a class="more" href="${esc(n.link)}" target="_blank" rel="noopener">자세히 보기 →</a>` : ""}
-    </article>`).join("");
+  const byYear = {};
+  N.items.forEach((n) => { const y = String(n.date).slice(0, 4); (byYear[y] = byYear[y] || []).push(n); });
+  $("#newsTrack").innerHTML = Object.keys(byYear).sort((a, b) => b.localeCompare(a)).map((y) => `
+    <div class="news-year reveal">
+      <h3 class="news-y">${esc(y)}</h3>
+      <div class="news-list">${byYear[y].map((n) => `
+        <article class="news-card">
+          <div class="news-meta"><span class="news-cat">${esc(n.category)}</span><span>${esc(n.date)}${n.source ? ` · ${esc(n.source)}` : ""}</span></div>
+          <h4>${esc(n.title)}${badge(n.verified === true ? true : N.verified)}</h4>
+          <p>${esc(n.body)}</p>
+          ${n.link ? `<a class="more" href="${esc(n.link)}" target="_blank" rel="noopener">기사 보기 →</a>` : ""}
+        </article>`).join("")}</div>
+    </div>`).join("");
 
   // CONTACT
   const C = D.contact;

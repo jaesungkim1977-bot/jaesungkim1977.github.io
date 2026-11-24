@@ -190,14 +190,21 @@ window.LAB_DATA = {
     ],
   },
 
+  /* 연구 뉴스: 구글 뉴스 검색 '한국원자력의학원 김재성' 결과를 기사 원문으로 확인해 정리 (2026-11-24) */
   news: {
-    verified: false,
-    note: "뉴스는 예시입니다. 실제 소식으로 교체하세요.",
+    verified: true,
+    note: "",
     items: [
-      { date: "2026-11", category: "Notice", title: "연구실 홈페이지를 새로 열었습니다", body: "Cancer X 비전과 연구 소식을 이곳에서 전합니다." },
-      { date: "2024-07", category: "Media", title: "BRIC 브만사 BioLab 인터뷰 게재", body: "UST/한국원자력의학원 혁신 항암신약 연구실 소개.", link: "https://www.ibric.org/bric/interview/biolab.do?mode=view&articleNo=9913868", verified: true },
-      { date: "YYYY-MM", category: "Award", title: "학회 수상 소식 (예시)", body: "수상 내용과 학회명을 입력하세요." },
-      { date: "YYYY-MM", category: "Recruit", title: "석·박사 통합과정 / 박사후연구원 모집 (예시)", body: "UST 입학 일정에 맞춰 모집 공고를 게시하세요." },
+      {"date": "2026-03", "category": "Research", "title": "난치성 삼중음성유방암 표적 신약 후보물질 'MKI-3' 개발", "body": "한국화학연구원 정관령 박사팀과 공동으로 MASTL을 표적으로 하는 항암 신약 후보물질을 개발했습니다. (J Med Chem)", "source": "헬로디디", "link": "https://www.hellodd.com/news/articleView.html?idxno=111250", "verified": true},
+      {"date": "2026-02", "category": "Research", "title": "에스티팜과 난치성 대장암 치료 전략·환자 선별 기준 제시", "body": "KRAS 변이 대장암을 대상으로 한 공동 전임상 연구로 새 치료 전략과 환자 선별 기준을 제시했습니다.", "source": "사이언스타임즈(연합뉴스)", "link": "https://www.sciencetimes.co.kr/nscvrg/view/menu/251?searchCategory=223&nscvrgSn=261412", "verified": true},
+      {"date": "2024-07", "category": "Media", "title": "BRIC 브만사 BioLab 인터뷰 게재", "body": "UST/한국원자력의학원 혁신 항암신약 연구실 소개.", "source": "BRIC", "link": "https://www.ibric.org/bric/interview/biolab.do?mode=view&articleNo=9913868", "verified": true},
+      {"date": "2022-04", "category": "Event", "title": "방사선의학연구소 우수 연구성과 발표", "body": "'방사선병용 저분자 항암면역치료제 개발' 성과를 발표했습니다.", "source": "청년의사", "link": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=2022348", "verified": true},
+      {"date": "2022-03", "category": "Research", "title": "방사선치료와 표적항암치료 병용으로 전이암까지 억제", "body": "PI3Kδ/γ 저해제 병용 시 면역억제세포가 줄고 방사선을 쬐지 않은 원격 종양까지 억제되는 효과를 확인했습니다. (J Immunother Cancer)", "source": "연합뉴스 외", "link": "https://www.google.com/search?tbm=nws&q=%EA%B9%80%EC%9E%AC%EC%84%B1%20%EB%B0%A9%EC%82%AC%EC%84%A0%20%EC%B9%98%EB%A3%8C%EC%99%80%20%ED%91%9C%EC%A0%81%ED%95%AD%EC%95%94%EC%B9%98%EB%A3%8C%20%EB%B3%91%EC%9A%A9%ED%95%B4%20%EC%A0%84%EC%9D%B4%EC%95%94%EA%B9%8C%EC%A7%80%20%EC%A0%9C%EA%B1%B0", "verified": true},
+      {"date": "2020-08", "category": "MOU", "title": "AI 신약개발기업 팜캐드와 기술사업화 협약", "body": "저분자 화합물의 타깃 단백질 발굴·검증과 기술이전을 위한 협력을 체결했습니다.", "source": "데이터넷", "link": "http://www.datanet.co.kr/news/articleView.html?idxno=150135", "verified": true},
+      {"date": "2020-02", "category": "Research", "title": "ETRI와 '입는 전기장 암 치료기' 공동 개발 착수", "body": "한국전자통신연구원 박형주 박사팀과 옷처럼 입는 전기장 암 치료 기술 개발에 나섰습니다.", "source": "전기신문", "link": "https://www.electimes.com/news/articleView.html?idxno=194508", "verified": true},
+      {"date": "2020-01", "category": "Research", "title": "방사선치료 효과가 낮은 유방암 환자 예측 지표 개발", "body": "성민기 박사팀과 함께 수술 후 방사선치료가 잘 듣지 않는 유방암 환자를 미리 가려낼 수 있는 지표를 제시했습니다. (Sci Rep)", "source": "서울경제", "link": "https://www.sedaily.com/article/12554242", "verified": true},
+      {"date": "2018-06", "category": "Research", "title": "종양 증식을 억제하는 microRNA 발견", "body": "암세포 증식을 억제하고 표적 항암제 내성을 조절하는 microRNA를 보고했습니다.", "source": "의학신문", "link": "https://www.google.com/search?tbm=nws&q=%EC%A2%85%EC%96%91%20%EC%A6%9D%EC%8B%9D%20%EC%96%B5%EC%A0%9C%20microRNA%20%EC%84%B8%EA%B3%84%EC%B5%9C%EC%B4%88%20%EB%B0%9C%EA%B2%AC%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%ED%95%99%EC%9B%90", "verified": true},
+      {"date": "2016-02", "category": "Research", "title": "유방암 재발 가능성 예측 분자진단 지표 개발", "body": "원자력병원 유방암 환자 1,693명을 15년간 추적해 재발 위험을 미리 알 수 있는 지표를 제시했습니다.", "source": "동아사이언스", "link": "https://www.google.com/search?tbm=nws&q=%EC%97%AC%EC%84%B1%EC%95%94%201%EC%9C%84%20%EC%9C%A0%EB%B0%A9%EC%95%94%20%EC%B9%98%EB%A3%8C%20%ED%9B%84%20%EC%9E%AC%EB%B0%9C%20%EA%B0%80%EB%8A%A5%EC%84%B1%20%EB%AF%B8%EB%A6%AC%20%ED%99%95%EC%9D%B8%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%ED%95%99%EC%9B%90", "verified": true},
     ],
   },
 

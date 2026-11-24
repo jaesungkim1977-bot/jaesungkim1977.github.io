@@ -264,3 +264,11 @@ img.avatar { object-fit: cover; }
   .pi-photo { max-width: 240px; }
 }
 @media (max-width: 520px) { .tl li { grid-template-columns: 1fr; gap: 2px; } }
+
+/* NEWS by year */
+.news-track { display: block; }
+.news-year { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 24px; padding: 28px 0; border-top: 1px solid rgba(255,255,255,.08); }
+.news-y { font-family: var(--display); font-size: 34px; color: var(--accent); line-height: 1; position: sticky; top: 96px; align-self: start; }
+.news-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.news-card h4 { font-size: 17px; line-height: 1.45; }
+@media (max-width: 700px) { .news-year { grid-template-columns: 1fr; gap: 12px; } .news-y { position: static; font-size: 26px; } }
