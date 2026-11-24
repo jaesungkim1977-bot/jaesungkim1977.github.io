@@ -322,3 +322,4 @@ img.avatar { object-fit: cover; }
   .pl-bar em { display: none; }
   .pl-status { display: block; font-size: 13px; font-weight: 700; color: #cfd8e6; }
 }
+.pl-partner span { line-height: 1.4; }
