@@ -189,7 +189,8 @@
   $("#navToggle").addEventListener("click", () => $("#navLinks").classList.toggle("open"));
   links.forEach((a) => a.addEventListener("click", () => $("#navLinks").classList.remove("open")));
 
-  // Reveal on scroll + pipeline bars
+  // Reveal on scroll + pipeline bars (오류가 나면 내용이 숨겨지지 않도록 마지막에 켭니다)
+  document.documentElement.classList.add("reveal-on");
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
       if (!en.isIntersecting) return;
@@ -199,4 +200,5 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  document.querySelectorAll(".pl-bar i").forEach((b) => { if (!b.closest(".reveal")) b.style.width = b.dataset.w; });
 })();
