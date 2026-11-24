@@ -222,3 +222,9 @@ h3 { font-size: 20px; }
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+.pub .corr { display: inline-block; font-size: 11px; font-weight: 700; color: #0f766e; background: #ccfbf1; padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 2px; }
+.chip-corr { border-color: #19d3c5; }
+.chip-corr.on { background: #0f766e; border-color: #0f766e; }
+.pub-count { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.pub-list { max-height: 900px; overflow-y: auto; padding-right: 6px; }

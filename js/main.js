@@ -71,19 +71,21 @@
 
   // PUBLICATIONS
   const pubs = D.publications.items;
-  $("#pubNote").textContent = D.publications.note;
+  $("#pubNote").textContent = D.publications.note || "";
   const years = [...new Set(pubs.map((p) => p.year))].sort((a, b) => b - a);
-  let fYear = "all", q = "";
+  let fYear = "all", q = "", onlyCorr = false;
   $("#pubFilters").innerHTML = ['<button class="chip on" data-y="all">전체</button>']
-    .concat(years.map((y) => `<button class="chip" data-y="${y}">${y}</button>`)).join("");
+    .concat(years.map((y) => `<button class="chip" data-y="${y}">${y}</button>`)).join("")
+    + '<button class="chip chip-corr" id="corrToggle" aria-pressed="false">교신저자 논문만</button>';
   function renderPubs() {
-    const list = pubs.filter((p) => (fYear === "all" || String(p.year) === fYear) &&
+    const list = pubs.filter((p) => (fYear === "all" || String(p.year) === fYear) && (!onlyCorr || p.corresponding) &&
       (!q || (p.title + " " + p.journal + " " + (p.tags || []).join(" ")).toLowerCase().includes(q)));
+    $("#pubCount").textContent = `${list.length}편 / 전체 ${pubs.length}편`;
     $("#pubList").innerHTML = list.length ? list.map((p) => `
       <li class="pub">
         <div class="yr">${p.year}</div>
         <div>
-          <div class="t">${esc(p.title)}</div>
+          <div class="t">${esc(p.title)}${p.corresponding ? ' <span class="corr" title="교신저자">Corresponding</span>' : ""}</div>
           <div class="j">${esc(p.journal)}${p.doi ? ` · <a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">DOI</a>` : ""}</div>
           <div class="tags">${(p.tags || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
         </div>
@@ -91,7 +93,8 @@
   }
   $("#pubFilters").addEventListener("click", (e) => {
     const b = e.target.closest(".chip"); if (!b) return;
-    document.querySelectorAll("#pubFilters .chip").forEach((c) => c.classList.toggle("on", c === b));
+    if (b.id === "corrToggle") { onlyCorr = !onlyCorr; b.classList.toggle("on", onlyCorr); b.setAttribute("aria-pressed", onlyCorr); renderPubs(); return; }
+    document.querySelectorAll("#pubFilters .chip:not(#corrToggle)").forEach((c) => c.classList.toggle("on", c === b));
     fYear = b.dataset.y; renderPubs();
   });
   $("#pubSearch").addEventListener("input", (e) => { q = e.target.value.trim().toLowerCase(); renderPubs(); });
