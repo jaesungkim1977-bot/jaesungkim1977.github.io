@@ -92,7 +92,7 @@ window.LAB_DATA = {
       name: "김재성",
       nameEn: "Jae-Sung Kim, Ph.D.",
       title: "책임연구원, 한국원자력의학원 방사선의학연구소 · 교수(전임), UST",
-      photo: "images/pi.jpg",
+      photo: "images/pi.jpg?v=2",
       email: "jaesung@kirams.re.kr",
       phone: "02-970-1669",
       greetingNote: "",
